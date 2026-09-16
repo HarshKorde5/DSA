@@ -40,11 +40,15 @@ public class BFS {
         }
 
         System.out.println("BFS Traversal of graph is : ");
-        BFS.bfs(0, graph);
+        boolean[] visited = new boolean[graph.size()];
+        for(int i = 0; i < n; i++){
+            if(!visited[i]){
+                BFS.bfs(i, graph, visited);
+            }
+        }
     }
 
-    static void bfs(int start, List<List<Integer>> graph){
-        boolean[] visited = new boolean[graph.size()];
+    static void bfs(int start, List<List<Integer>> graph, boolean[] visited){
         Queue<Integer> queue = new ArrayDeque<>();
 
         visited[start] = true;
