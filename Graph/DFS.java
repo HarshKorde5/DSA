@@ -1,8 +1,5 @@
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -48,6 +45,8 @@ public class DFS {
                 DFS.dfs_rec(i, graph, visited);
             }
         }
+
+        sc.close();
     }
 
     static void dfs(int start, List<List<Integer>> graph, boolean[] visited){

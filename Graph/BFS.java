@@ -1,6 +1,5 @@
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
@@ -46,6 +45,8 @@ public class BFS {
                 BFS.bfs(i, graph, visited);
             }
         }
+
+        sc.close();
     }
 
     static void bfs(int start, List<List<Integer>> graph, boolean[] visited){

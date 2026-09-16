@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Graph_02 {
     public static void main(String[] args){
-        int n = 3, m = 3;
+        int n = 3;
         ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
 
 
