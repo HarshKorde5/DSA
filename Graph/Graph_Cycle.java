@@ -32,7 +32,7 @@ class Node{
 }
 
 class Solution{
-    private boolean checkCycle(List<List<Integer>> graph, boolean[] visited, int start){
+    private boolean checkCycleBFS(List<List<Integer>> graph, boolean[] visited, int start){
         Deque<Node> q = new ArrayDeque<>();
 
         q.offer(new Node(start, -1));
@@ -57,13 +57,27 @@ class Solution{
         return false;
     } 
 
+    private boolean checkCycleDFS(int curr, int parent, List<List<Integer>> graph, boolean[] visited){
+        visited[curr] = true;
+
+        for(int neighbor : graph.get(curr)){
+            if(!visited[neighbor]){
+                if(checkCycleDFS(neighbor, curr, graph, visited)) return true;
+            }else if(neighbor != parent){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public boolean isCycle(List<List<Integer>> graph, int start){
         boolean[] visited = new boolean[graph.size()];
         Arrays.fill(visited,false);
         
         for(int i = 1; i < graph.size(); i++){
             if(!visited[i]){
-                if(checkCycle(graph, visited, i))   return true;
+                if(checkCycleDFS(i, -1, graph, visited))   return true;
             }
         }
         return false;
