@@ -26,7 +26,7 @@ class Solution{
         Arrays.fill(color, -1);
         for(int i = 1; i < graph.size(); i++){
             if(color[i] == -1){
-                if(!bfs(graph, color, i))  return false;
+                if(!dfs(graph, color, i))  return false;
             }
         }
 
@@ -51,4 +51,16 @@ class Solution{
         return true;
     }
 
+    private boolean dfs(List<List<Integer>> graph, int[] color, int start){
+        for(int neighbor : graph.get(start)){
+            if(color[neighbor] == -1){
+                color[neighbor] = 1 - color[start];
+                if(!dfs(graph, color, neighbor)){
+                    return false;
+                }
+            }else if(color[neighbor] == color[start])   return false;
+        }
+
+        return true;
+    }
 }
